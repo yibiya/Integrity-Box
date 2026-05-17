@@ -1,12 +1,6 @@
 id=playintegrityfix
-name=.𝙄𝙣𝙩𝙚𝙜𝙧𝙞𝙩𝙮 𝘽𝙤𝙭 📦
-version=v34
-versionCode=34000
-author=𝗠𝗘𝗢𝗪𝗻𝗮 💅 (汉化: yibiya)
-updateJson=https://raw.githubusercontent.com/MeowDump/Integrity-Box/refs/heads/main/release.json
-support=https://t.me/MeowDump
-donate=https://MeowDump.github.io
-banner=https://4kwallpapers.com/images/walls/thumbs_3t/19039.jpg
-webuiIcon=icon.png
-actionIcon=icon.png
-description=停止发布 Play Integrity 截图。每次不必要的检查都会加速 Keybox 的消耗。没有人关心你的 "STRONG INTEGRITY" 截图。
+name=Integrity Box (Lite)
+version=v34-lite
+versionCode=34001
+author=𝗠𝗘𝗢𝗪𝗻𝗮 💅 (精简: yibiya)
+description=仅保留自动更新 Keybox 和指纹功能的精简版。排除了 UI 和多余的属性修改，解决 AVB 2.0 检出问题。
