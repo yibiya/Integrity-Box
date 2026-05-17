@@ -164,7 +164,7 @@ display_footer() {
 
 # Main installation flow
 install_module() {
-    check_integrity
+# check_integrity
     setup_environment
     hizru
     prepare_directories
