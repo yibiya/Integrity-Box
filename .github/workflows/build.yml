@@ -15,7 +15,7 @@ jobs:
 
       - name: Create Zip Package
         run: |
-          zip -r Integrity-Box-CN.zip . -x "*.git*" "*.github*"
+          zip -r Integrity-Box-CN.zip . -x "*.git*" "*.github*" "assets/*" "test.zip"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
