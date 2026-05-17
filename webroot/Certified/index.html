@@ -122,20 +122,20 @@ body{
 <body>
 
 <div class="card">
-  <div class="h">Fix Device Not Certified</div>
+  <div class="h">修复设备未认证</div>
 
   <div class="note">
-    This will clear data for Play Store and Google Play Services.
-    You will need to sign in your gmail account again.
+    这将清除 Play 商店和 Google Play 服务的数据。
+    你需要重新登录你的 Gmail 账号。
   </div>
   
   <button id="clearBtn" class="btn">
     <span class="material-symbols-outlined">delete_forever</span>
-    <span id="btnText">Clear App Data</span>
+    <span id="btnText">清除应用数据</span>
   </button>
   
   <div class="warn">
-    Only click if you're passing DEVICE or STRONG integrity
+    仅当你通过了 DEVICE 或 STRONG 完整性时点击
   </div>
 
   <div class="footer">IntegrityBox © 2025</div>
@@ -183,21 +183,21 @@ function runShell(cmd){
 
 btn.onclick = async () => {
   btn.disabled = true;
-  btnText.innerHTML = `ACTION COMPLETE ✅`;
+  btnText.innerHTML = `操作完成 ✅`;
 
-  popup("Go, Login your account", "success");
+  popup("去登录你的账号吧", "success");
 
   // run action
   runShell(`
     pm clear com.android.vending &&
     pm clear com.google.android.gms
   `).catch(() => {
-    popup("Command failed", "error");
+    popup("命令执行失败", "error");
   });
 
   // reset UI after 1m delay
   setTimeout(() => {
-    btnText.textContent = "Clear App Data";
+    btnText.textContent = "清除应用数据";
     btn.disabled = false;
   }, 60000);
 };

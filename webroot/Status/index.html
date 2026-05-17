@@ -1094,25 +1094,25 @@
                     <span class="material-icons-round">security</span>
                 </div>
                 <div class="brand-text">
-                    <h1>Play Integrity Manager</h1>
-                    <p>Powered By IntegrityBox</p>
+                    <h1>Play Integrity 管理器</h1>
+                    <p>由 IntegrityBox 提供支持</p>
                 </div>
             </div>
             <div class="status-badge">
                 <div class="status-indicator" id="netStatusDot"></div>
-                <span id="netStatusText">Checking</span>
+                <span id="netStatusText">检查中</span>
             </div>
         </header>
 
         <div class="offline-banner" id="offlineBanner">
             <span class="material-icons-round" style="font-size: 22px;">wifi_off</span>
-            <span>Internet unavailable. Keybox status cannot be verified.</span>
+            <span>网络不可用。无法验证 Keybox 状态。</span>
         </div>
 
         <div class="section-header hidden" id="verdictSectionHeader">
             <div class="section-title">
                 <span class="material-icons-round">verified</span>
-                Integrity Status
+                完整性状态
             </div>
             <button class="info-btn" onclick="showInfo('verdicts')">
                 <span class="material-icons-round" style="font-size: 20px;">info</span>
@@ -1126,8 +1126,8 @@
                         <span class="material-icons-round">shield</span>
                     </div>
                     <div class="verdict-content">
-                        <div class="verdict-name">Strong Integrity</div>
-                        <div class="verdict-desc">Hardware attestation</div>
+                        <div class="verdict-name">强完整性 (Strong)</div>
+                        <div class="verdict-desc">硬件级证明</div>
                     </div>
                     <div class="verdict-status-pill">...</div>
                 </div>
@@ -1136,8 +1136,8 @@
                         <span class="material-icons-round">smartphone</span>
                     </div>
                     <div class="verdict-content">
-                        <div class="verdict-name">Device Integrity</div>
-                        <div class="verdict-desc">Play Protect certified</div>
+                        <div class="verdict-name">设备完整性 (Device)</div>
+                        <div class="verdict-desc">Play 保护机制认证</div>
                     </div>
                     <div class="verdict-status-pill">...</div>
                 </div>
@@ -1146,8 +1146,8 @@
                         <span class="material-icons-round">lock</span>
                     </div>
                     <div class="verdict-content">
-                        <div class="verdict-name">Basic Integrity</div>
-                        <div class="verdict-desc">System compatibility</div>
+                        <div class="verdict-name">基本完整性 (Basic)</div>
+                        <div class="verdict-desc">系统兼容性</div>
                     </div>
                     <div class="verdict-status-pill">...</div>
                 </div>
@@ -1155,7 +1155,7 @@
             <div style="padding: 16px 24px; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border);">
                 <div style="font-size: 0.85rem; color: var(--text-tertiary); display: flex; align-items: center; gap: 8px;">
                     <span class="material-icons-round" style="font-size: 16px;">update</span>
-                    <span id="keyboxUpdated">Waiting for sync...</span>
+                    <span id="keyboxUpdated">等待同步...</span>
                 </div>
             </div>
         </div>
@@ -1163,7 +1163,7 @@
         <div class="section-header">
             <div class="section-title">
                 <span class="material-icons-round">fingerprint</span>
-                Device Identity
+                设备标识
             </div>
             <button class="info-btn" onclick="showInfo('fingerprint')">
                 <span class="material-icons-round" style="font-size: 20px;">info</span>
@@ -1172,31 +1172,31 @@
 
         <div class="identity-grid" id="fpPanel">
             <div class="identity-item">
-                <div class="identity-label">Manufacturer</div>
+                <div class="identity-label">制造商</div>
                 <div class="identity-value" id="fpManufacturer">-</div>
             </div>
             <div class="identity-item">
-                <div class="identity-label">Model</div>
+                <div class="identity-label">型号</div>
                 <div class="identity-value" id="fpModel">-</div>
             </div>
             <div class="identity-item">
-                <div class="identity-label">Device</div>
+                <div class="identity-label">设备</div>
                 <div class="identity-value" id="fpDevice">-</div>
             </div>
             <div class="identity-item">
-                <div class="identity-label">Release</div>
+                <div class="identity-label">发行版</div>
                 <div class="identity-value" id="fpRelease">-</div>
             </div>
             <div class="identity-item full-width">
-                <div class="identity-label">Fingerprint</div>
+                <div class="identity-label">指纹</div>
                 <div class="identity-value mono" id="fpFingerprint">-</div>
             </div>
             <div class="identity-item">
-                <div class="identity-label">Security Patch</div>
+                <div class="identity-label">安全补丁</div>
                 <div class="identity-value" id="fpSecurityPatch">-</div>
             </div>
             <div class="identity-item">
-                <div class="identity-label">SDK Level</div>
+                <div class="identity-label">SDK 级别</div>
                 <div class="identity-value" id="fpSdk">-</div>
             </div>
         </div>
@@ -1205,7 +1205,7 @@
             <div class="validity-section" id="validitySection">
                 <div class="validity-header">
                     <div>
-                        <div class="validity-title">Validity Period</div>
+                        <div class="validity-title">有效期</div>
                         <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px; font-weight: 500;" id="validityRange">-</div>
                     </div>
                     <div class="validity-days" id="expiryDays">-</div>
@@ -1216,11 +1216,11 @@
                 <div class="validity-dates">
                     <span>
                         <span class="material-icons-round" style="font-size: 16px;">calendar_today</span>
-                        <span id="fpCreated">Created: -</span>
+                        <span id="fpCreated">创建时间: -</span>
                     </span>
                     <span>
                         <span class="material-icons-round" style="font-size: 16px;">edit</span>
-                        <span id="fpModified">Modified: -</span>
+                        <span id="fpModified">修改时间: -</span>
                     </span>
                 </div>
             </div>
@@ -1228,7 +1228,7 @@
             <div class="stats-row">
                 <div class="stat-pill">
                     <div class="stat-value" id="daysLeft">-</div>
-                    <div class="stat-label">Days Left</div>
+                    <div class="stat-label">剩余天数</div>
                 </div>
                 <div class="stat-pill">
                     <div class="stat-value"><span class="badge badge-success" id="selinuxStatus">-</span></div>
@@ -1236,11 +1236,11 @@
                 </div>
                 <div class="stat-pill">
                     <div class="stat-value" id="playStoreVer" style="font-size: 0.85rem;">-</div>
-                    <div class="stat-label">Play Store</div>
+                    <div class="stat-label">Play 商店</div>
                 </div>
                 <div class="stat-pill">
                     <div class="stat-value" id="playServicesVer" style="font-size: 0.85rem;">-</div>
-                    <div class="stat-label">Play Services</div>
+                    <div class="stat-label">Play 服务</div>
                 </div>
             </div>
         </div>
@@ -1250,8 +1250,8 @@
                 <span class="material-icons-round">memory</span>
             </div>
             <div class="tee-content">
-                <div class="tee-title" id="teeTitle">Checking...</div>
-                <div class="tee-desc" id="teeDesc">Trusted Execution Environment</div>
+                <div class="tee-title" id="teeTitle">检查中...</div>
+                <div class="tee-desc" id="teeDesc">可信执行环境</div>
             </div>
             <div class="tee-badge" id="teeBadge">...</div>
         </div>
@@ -1259,7 +1259,7 @@
         <div class="section-header">
             <div class="section-title">
                 <span class="material-icons-round">schedule</span>
-                Activity Log
+                活动日志
             </div>
         </div>
 
@@ -1270,8 +1270,8 @@
                         <span class="material-icons-round">cloud_sync</span>
                     </div>
                     <div class="activity-info">
-                        <div class="activity-label">Keybox Sync</div>
-                        <div class="activity-sub">Last server check</div>
+                        <div class="activity-label">Keybox 同步</div>
+                        <div class="activity-sub">上次服务器检查</div>
                     </div>
                 </div>
                 <div class="activity-value" id="lastKeyboxSync">-</div>
@@ -1282,8 +1282,8 @@
                         <span class="material-icons-round">fingerprint</span>
                     </div>
                     <div class="activity-info">
-                        <div class="activity-label">Fingerprint Read</div>
-                        <div class="activity-sub">PIF configuration</div>
+                        <div class="activity-label">指纹读取</div>
+                        <div class="activity-sub">PIF 配置</div>
                     </div>
                 </div>
                 <div class="activity-value" id="lastFpRead">-</div>
@@ -1293,15 +1293,15 @@
 
     <button class="refresh-btn" id="refreshBtn" onclick="init()">
         <span class="material-icons-round">sync</span>
-        <span id="refreshText">Refresh</span>
+        <span id="refreshText">刷新</span>
     </button>
 
     <div class="modal-overlay" id="infoModal" onclick="hideModalOnBackdrop(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-handle"></div>
-            <div class="modal-title" id="modalTitle">Information</div>
+            <div class="modal-title" id="modalTitle">信息</div>
             <div class="modal-text" id="modalText"></div>
-            <button class="modal-close" onclick="hideModal()">Done</button>
+            <button class="modal-close" onclick="hideModal()">完成</button>
         </div>
     </div>
 
@@ -1314,15 +1314,15 @@
         };
 
         const infoTexts = {
-            verdicts: `<strong>Play Integrity Verdicts</strong><br><br>
-                Google Play Integrity API provides three levels of device verification:<br><br>
-                <strong>Strong Integrity</strong> - Device has hardware-backed security and passes cryptographic attestation.<br><br>
-                <strong>Device Integrity</strong> - Device is Play Protect certified but may not pass hardware/RKP attestation.<br><br>
-                <strong>Basic Integrity</strong> - Device passes basic system checks (bootloader is locked/spoofed).`,
-            fingerprint: `<strong>Device Fingerprint</strong><br><br>
-                Spoofs your device identity to match a certified device profile.<br><br>
-                <strong>Validity Period</strong> - Estimated expiry calculated from their canary release dates. Once expired, integrity checks will fail.<br><br>
-                Location: <code>$MODDIR/custom.pif.prop</code>`
+            verdicts: `<strong>Play Integrity 判定</strong><br><br>
+                Google Play Integrity API 提供三个级别的设备验证：<br><br>
+                <strong>强完整性 (Strong)</strong> - 设备具有硬件级安全保护，并能通过加密证明。<br><br>
+                <strong>设备完整性 (Device)</strong> - 设备已通过 Play 保护机制认证，但可能无法通过硬件/RKP 证明。<br><br>
+                <strong>基本完整性 (Basic)</strong> - 设备通过了基本的系统检查（引导加载程序已锁定或已欺骗）。`,
+            fingerprint: `<strong>设备指纹</strong><br><br>
+                欺骗你的设备标识，使其与已认证的设备配置文件匹配。<br><br>
+                <strong>有效期</strong> - 根据 Canary 版本发布日期计算的估计有效期。一旦过期，完整性检查将会失败。<br><br>
+                位置: <code>$MODDIR/custom.pif.prop</code>`
         };
 
         async function exec(cmd) {

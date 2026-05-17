@@ -389,10 +389,10 @@ body{
   <div class="header">
     <h1>
       <svg class="header-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-      Control Centre
+      控制中心
     </h1>
     <div class="subtitle-row">
-      <span class="subtitle">IntegrityBox Configuration</span>
+      <span class="subtitle">IntegrityBox 配置</span>
       <div class="header-indicators">
         <div class="mini-dot active" id="mini-active"></div>
         <div class="mini-dot reboot" id="mini-reboot"></div>
@@ -404,15 +404,15 @@ body{
   <div class="status-bar">
     <div class="status-pill active" id="pill-active">
       <div class="status-dot"></div>
-      <span id="count-active">0 Active</span>
+      <span id="count-active">0 已启用</span>
     </div>
     <div class="status-pill reboot" id="pill-reboot">
       <div class="status-dot"></div>
-      <span id="count-reboot">0 Reboot</span>
+      <span id="count-reboot">0 待重启</span>
     </div>
     <div class="status-pill action" id="pill-action">
       <div class="status-dot"></div>
-      <span id="count-action">0 Action</span>
+      <span id="count-action">0 待执行</span>
     </div>
   </div>
 
@@ -426,8 +426,8 @@ body{
         <div class="ring-text" id="progress-percent">0%</div>
       </div>
       <div class="summary-info">
-        <h3>Configuration Status</h3>
-        <p id="progress-detail">0 of 18 settings enabled</p>
+        <h3>配置状态</h3>
+        <p id="progress-detail">18 个设置中已启用 0 个</p>
       </div>
     </div>
   </div>
@@ -442,45 +442,45 @@ const REBOOT_ITEMS=["nodebug","build","tag","twrp","rukja","safemode"];
 const ACTION_ITEMS=["gapps","root","override","ota","hma","download","lsposed"];
 
 const CONFIG=[
-  {id:"NoLineageProp",icon:"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",title:"Spoof Lineage Props",desc:"Disable this if camera app fails to work properly",badge:""},
-  {id:"nodebug",icon:"M20 8h-2.81c-.45-1.12-1.15-2.1-2.02-2.86l1.41-1.41L14.41 2.1 12.7 3.81c-.9-.52-1.93-.81-3.03-.81-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6c0-1.1-.29-2.13-.81-3.03l1.71-1.71 1.42 1.42c-.76.87-1.74 1.57-2.86 2.02V20c0 1.1.9 2 2 2h3v-2h-3v-2.16c1.74-.41 3.31-1.35 4.5-2.65V8z",title:"Debug Fingerprint",desc:"Spoofs debug fingerprint to hide custom ROM traces",badge:"reboot"},
-  {id:"build",icon:"M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z",title:"Debug Build",desc:"Spoofs build type from userdebug to user",badge:"reboot"},
-  {id:"tag",icon:"M12.89 1.45l8 4c.6.3 1.1.9 1.1 1.55v9c0 .65-.5 1.25-1.1 1.55l-8 4c-.4.2-.9.2-1.3 0l-8-4c-.6-.3-1.1-.9-1.1-1.55v-9c0-.65.5-1.25 1.1-1.55l8-4c.4-.2.9-.2 1.3 0z",title:"Build Tag",desc:"Spoofs build tag to release-keys",badge:"reboot"},
-  {id:"lsposed",icon:"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z",title:"Clear LSposed",desc:"Removes LSposed traces from system props",badge:"action"},
-  {id:"encrypt",icon:"M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z",title:"Spoof Encryption",desc:"Fakes storage encryption status for banking apps",badge:""},
-  {id:"twrp",icon:"M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z",title:"Hide Recovery",desc:"Hides custom recovery traces",badge:"reboot"},
-  {id:"gapps",icon:"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z",title:"Clear Gapps Logs",desc:"Wipes gapp installation logs",badge:"action"},
-  {id:"iframe_gesture_right",icon:"M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01z",title:"Right Gestures",desc:"Enables right-hand side back tap gestures in WebUI",badge:""},
-  {id:"iframe_back_button",icon:"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z",title:"Floating Back",desc:"Adds floating back button for easier navigation",badge:""},
-  {id:"root",icon:"M10.54 11l-.54-.54L7.54 8 6 6.46 2.38 2.84 1.27 1.73 0 3l2.01 2.01L2 3.99c-1.06 0-1.99.74-1.99 2L0 16c0 1.26.74 2 2 2h15.46l2.29 2.29 1.41-1.41L10.54 11z",title:"Clear Module Logs",desc:"Wipes saved module log traces",badge:"action"},
-  {id:"download",icon:"M19 9h-4V3H9v6H5l7 7 7-7z",title:"Integrity Downloader",desc:"Downloads useful & recommended tools",badge:"action"},
-  {id:"safemode",icon:"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z",title:"Safe Mode",desc:"Disables all module features for troubleshooting",badge:"reboot"},
-  {id:"rukja",icon:"M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z",title:"Disable AutoPilot",desc:"Stops automatic keybox and fingerprint updates",badge:"reboot"},
-  {id:"noredirect",icon:"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8z",title:"No Redirect",desc:"Disables automatic redirects to Telegram on installation",badge:""},
-  {id:"override",icon:"M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1z",title:"Lineage v2",desc:"Manual LineageOS property spoofing",badge:"action"},
-  {id:"ota",icon:"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z",title:"OTA Fix",desc:"Fixes LineageOS OTA update error",badge:"action"},
-  {id:"hma",icon:"M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27z",title:"HMA Config",desc:"Injects HideMyApplist configuration manually",badge:"action"}
+  {id:"NoLineageProp",icon:"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",title:"欺骗 Lineage 属性",desc:"如果相机无法正常工作，请禁用此项",badge:""},
+  {id:"nodebug",icon:"M20 8h-2.81c-.45-1.12-1.15-2.1-2.02-2.86l1.41-1.41L14.41 2.1 12.7 3.81c-.9-.52-1.93-.81-3.03-.81-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6c0-1.1-.29-2.13-.81-3.03l1.71-1.71 1.42 1.42c-.76.87-1.74 1.57-2.86 2.02V20c0 1.1.9 2 2 2h3v-2h-3v-2.16c1.74-.41 3.31-1.35 4.5-2.65V8z",title:"调试指纹",desc:"欺骗调试指纹以隐藏自定义 ROM 痕迹",badge:"重启"},
+  {id:"build",icon:"M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z",title:"调试构建",desc:"将构建类型从 userdebug 欺骗为 user",badge:"重启"},
+  {id:"tag",icon:"M12.89 1.45l8 4c.6.3 1.1.9 1.1 1.55v9c0 .65-.5 1.25-1.1 1.55l-8 4c-.4.2-.9.2-1.3 0l-8-4c-.6-.3-1.1-.9-1.1-1.55v-9c0-.65.5-1.25 1.1-1.55l8-4c.4-.2.9-.2 1.3 0z",title:"构建标签",desc:"将构建标签欺骗为 release-keys",badge:"重启"},
+  {id:"lsposed",icon:"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z",title:"清理 LSposed",desc:"从系统属性中移除 LSposed 痕迹",badge:"执行"},
+  {id:"encrypt",icon:"M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z",title:"欺骗加密",desc:"为银行应用伪造存储加密状态",badge:""},
+  {id:"twrp",icon:"M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z",title:"隐藏 Recovery",desc:"隐藏自定义 Recovery 痕迹",badge:"重启"},
+  {id:"gapps",icon:"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z",title:"清理 GApps 日志",desc:"擦除 GApps 安装日志",badge:"执行"},
+  {id:"iframe_gesture_right",icon:"M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01z",title:"右侧手势",desc:"在 WebUI 中启用右侧返回点按手势",badge:""},
+  {id:"iframe_back_button",icon:"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z",title:"悬浮返回",desc:"添加悬浮返回按钮，方便导航",badge:""},
+  {id:"root",icon:"M10.54 11l-.54-.54L7.54 8 6 6.46 2.38 2.84 1.27 1.73 0 3l2.01 2.01L2 3.99c-1.06 0-1.99.74-1.99 2L0 16c0 1.26.74 2 2 2h15.46l2.29 2.29 1.41-1.41L10.54 11z",title:"清理模块日志",desc:"擦除保存的模块日志痕迹",badge:"执行"},
+  {id:"download",icon:"M19 9h-4V3H9v6H5l7 7 7-7z",title:"完整性下载器",desc:"下载实用及推荐工具",badge:"执行"},
+  {id:"safemode",icon:"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z",title:"安全模式",desc:"禁用所有模块功能以便进行故障排除",badge:"重启"},
+  {id:"rukja",icon:"M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z",title:"禁用自动驾驶",desc:"停止自动更新 Keybox 和指纹",badge:"重启"},
+  {id:"noredirect",icon:"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8z",title:"无重定向",desc:"安装时禁用自动重定向到 Telegram",badge:""},
+  {id:"override",icon:"M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1z",title:"Lineage v2",desc:"手动 LineageOS 属性欺骗",badge:"执行"},
+  {id:"ota",icon:"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z",title:"OTA 修复",desc:"修复 LineageOS OTA 更新错误",badge:"执行"},
+  {id:"hma",icon:"M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27z",title:"HMA 配置",desc:"手动注入 HideMyApplist 配置",badge:"执行"}
 ];
 
 const MESSAGES={
-  noredirect:{on:"Redirect disabled",off:"Redirect enabled"},
-  NoLineageProp:{on:"Lineage props spoofed",off:"Lineage props unchanged"},
-  gapps:{on:"Gapp logs cleared",off:"Gapp logs enabled"},
-  safemode:{on:"Safe mode active",off:"Safe mode disabled"},
-  twrp:{on:"Custom recovery spoofed",off:"Custom recovery normal"},
-  rukja:{on:"AutoPilot disabled",off:"AutoPilot enabled"},
-  iframe_gesture_right:{on:"RHS gestures active",off:"RHS gestures disabled"},
-  iframe_back_button:{on:"Floating button active",off:"Floating button disabled"},
-  encrypt:{on:"Encryption spoofed",off:"Encryption normal"},
-  lsposed:{on:"LSposed cleared",off:"LSposed normal"},
-  nodebug:{on:"Debug fingerprint spoofed",off:"Debug fingerprint normal"},
-  build:{on:"Debug build spoofed",off:"Debug build normal"},
-  tag:{on:"Build tag spoofed",off:"Build tag normal"},
-  root:{on:"Module logs cleared",off:"Module logs normal"},
-  override:{on:"Lineage v2 active",off:"Lineage v2 disabled"},
-  ota:{on:"OTA fix active",off:"OTA fix disabled"},
-  hma:{on:"HMA config injected",off:"HMA config normal"},
-  download:{on:"Downloader active",off:"Downloader disabled"}
+  noredirect:{on:"重定向已禁用",off:"重定向已启用"},
+  NoLineageProp:{on:"已欺骗 Lineage 属性",off:"Lineage 属性未更改"},
+  gapps:{on:"GApp 日志已清理",off:"GApp 日志已启用"},
+  safemode:{on:"安全模式已激活",off:"安全模式已禁用"},
+  twrp:{on:"自定义 Recovery 已欺骗",off:"自定义 Recovery 正常"},
+  rukja:{on:"自动驾驶已禁用",off:"自动驾驶已启用"},
+  iframe_gesture_right:{on:"RHS 手势已激活",off:"RHS 手势已禁用"},
+  iframe_back_button:{on:"悬浮按钮已激活",off:"悬浮按钮已禁用"},
+  encrypt:{on:"加密已欺骗",off:"加密正常"},
+  lsposed:{on:"LSposed 已清理",off:"LSposed 正常"},
+  nodebug:{on:"调试指纹已欺骗",off:"调试指纹正常"},
+  build:{on:"调试构建已欺骗",off:"调试构建正常"},
+  tag:{on:"构建标签已欺骗",off:"构建标签正常"},
+  root:{on:"模块日志已清理",off:"模块日志正常"},
+  override:{on:"Lineage v2 已激活",off:"Lineage v2 已禁用"},
+  ota:{on:"OTA 修复已激活",off:"OTA 修复已禁用"},
+  hma:{on:"HMA 配置已注入",off:"HMA 配置正常"},
+  download:{on:"下载器已激活",off:"下载器已禁用"}
 };
 
 let enabledCount=0;
@@ -529,10 +529,10 @@ function updateVisuals(id,isActive){
 }
 
 function updateStats(){
-  document.getElementById("count-active").textContent=enabledCount+" Active";
-  document.getElementById("count-reboot").textContent=pendingRebootCount+" Reboot";
-  document.getElementById("count-action").textContent=pendingActionCount+" Action";
-  document.getElementById("progress-detail").textContent=enabledCount+" of "+FILES.length+" settings enabled";
+  document.getElementById("count-active").textContent=enabledCount+" 已启用";
+  document.getElementById("count-reboot").textContent=pendingRebootCount+" 待重启";
+  document.getElementById("count-action").textContent=pendingActionCount+" 待执行";
+  document.getElementById("progress-detail").textContent=FILES.length+" 个设置中已启用 "+enabledCount+" 个";
 
   const percent=Math.round((enabledCount/FILES.length)*100);
   document.getElementById("progress-percent").textContent=percent+"%";
