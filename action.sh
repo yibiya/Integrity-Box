@@ -486,38 +486,38 @@ else
 fi
 
 # Write security_patch.txt based on patch flag
-if [ -f "$PATCH_FLAG" ]; then
-  echo "system=prop" > "$FILE_PATH" 2>>"$PATCH_LOG"
-  log_step "UPDATED" "Patch to Stock"
+#if [ -f "$PATCH_FLAG" ]; then
+#  echo "system=prop" > "$FILE_PATH" 2>>"$PATCH_LOG"
+#  log_step "UPDATED" "Patch to Stock"
 
-else
-  echo "all=$PATCH_DATE" > "$FILE_PATH" 2>>"$PATCH_LOG"
-  log_step "SPOOFED" "Security Patch to $PATCH_DATE"
+#else
+#  echo "all=$PATCH_DATE" > "$FILE_PATH" 2>>"$PATCH_LOG"
+#  log_step "SPOOFED" "Security Patch to $PATCH_DATE"
 
-  CURRENT_PROP="$(getprop "$PROP_MAIN" | tr -d ' \t\r\n')"
-  log_patch "Current $PROP_MAIN: $CURRENT_PROP"
+#  CURRENT_PROP="$(getprop "$PROP_MAIN" | tr -d ' \t\r\n')"
+#  log_patch "Current $PROP_MAIN: $CURRENT_PROP"
 
   # Skip resetprop if skip file exists
-  if [ -f "$SKIP_FILE" ]; then
-    log_step "SKIPPED" "Skip file present, resetprop disabled"
+#  if [ -f "$SKIP_FILE" ]; then
+#    log_step "SKIPPED" "Skip file present, resetprop disabled"
 
   # Skip resetprop only for Oplus devices
-  elif [ "$BRAND_PROP" = "oplus" ]; then
-    log_step "ONEPLUS" "Avoiding due to hardware issues"
+#  elif [ "$BRAND_PROP" = "oplus" ]; then
+#    log_step "ONEPLUS" "Avoiding due to hardware issues"
 
-  else
-    if [ "$CURRENT_PROP" != "$PATCH_DATE" ]; then
-      if command -v resetprop >/dev/null 2>&1; then
-        resetprop "$PROP_MAIN" "$PATCH_DATE"
-        log_step "PATCHED" "$PROP_MAIN to $PATCH_DATE"
-      else
-        log_step "FAILED" "resetprop not found"
-      fi
-    else
-      log_step "SKIPPED" "Patch Spoofing not Required"
-    fi
-  fi
-fi
+#  else
+#    if [ "$CURRENT_PROP" != "$PATCH_DATE" ]; then
+#      if command -v resetprop >/dev/null 2>&1; then
+#        resetprop "$PROP_MAIN" "$PATCH_DATE"
+#        log_step "PATCHED" "$PROP_MAIN to $PATCH_DATE"
+#      else
+#        log_step "FAILED" "resetprop not found"
+#      fi
+#    else
+#      log_step "SKIPPED" "Patch Spoofing not Required"
+#    fi
+#  fi
+#fi
 
 log_patch "Patch handling complete"
 log_patch " "

@@ -1,29 +1,36 @@
 #!/system/bin/sh
 
-UPDATE="/data/adb/modules_update/playintegrityfix"
-HASHFILE="$UPDATE/hash"
+# Get the directory where this script is located
+MODDIR="${0%/*}"
+HASHFILE="$MODDIR/hash"
 
 # Check if hash file exists
 if [ ! -f "$HASHFILE" ]; then
-    echo " ✦ Hash file not found: $HASHFILE"
+    echo " ✦ Integrity hash file not found at: $HASHFILE"
     exit 1
 fi
 
 while IFS='|' read -r RELPATH EXPECT_SHA256; do
-    FILE="$UPDATE/$RELPATH"
+    # Skip empty lines
+    [ -z "$RELPATH" ] && continue
+    
+    FILE="$MODDIR/$RELPATH"
     
     # Check if file exists
     if [ ! -f "$FILE" ]; then
-        echo " ✦ File $FILE not found!"
+        echo " ✦ File $RELPATH missing!"
         exit 1
     fi
 
-    # Compute the actual SHA256 of the file
+    # Compute actual SHA256
     ACTUAL_SHA256=$(sha256sum "$FILE" | awk '{print $1}')
 
-    # Compare the actual and expected hashes
+    # Compare
     if [ "$ACTUAL_SHA256" != "$EXPECT_SHA256" ]; then
-        echo " ✦ Hash mismatch for $FILE (Expected: $EXPECT_SHA256, Got: $ACTUAL_SHA256)"
+        echo " ✦ Integrity mismatch: $RELPATH"
         exit 1
     fi
 done < "$HASHFILE"
+
+echo " ✦ Integrity verified successfully."
+exit 0

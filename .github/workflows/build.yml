@@ -1,0 +1,41 @@
+name: Build and Send to Telegram
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate Integrity Hash
+        run: |
+          # Create a clean list of files to zip
+          rm -f hash
+          find . -type f -not -path '*/.*' -not -path './assets/*' -not -path './.github/*' -not -name "hash" -not -name "*.zip" -not -name "test.zip" | sort > file_list.txt
+          while read -r file; do
+            filename=${file#./}
+            sha=$(sha256sum "$file" | awk '{print $1}')
+            echo "$filename|$sha" >> hash
+          done < file_list.txt
+          rm file_list.txt
+
+      - name: Create Zip Package
+        run: |
+          zip -r Integrity-Box-CN.zip . -x "*.git*" "*.github*" "assets/*" "test.zip"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Integrity-Box-CN
+          path: Integrity-Box-CN.zip
+
+      - name: Send to Telegram
+        run: |
+          curl -v -F document=@"Integrity-Box-CN.zip" \
+          "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}"

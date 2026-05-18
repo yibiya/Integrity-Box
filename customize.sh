@@ -222,11 +222,11 @@ if [ ! -f "/data/adb/modules/playintegrityfix/service.sh" ]; then
 fi
 
 # Write security patch file if missing 
-if [ ! -f /data/adb/tricky_store/security_patch.txt ]; then
-cat <<EOF > /data/adb/tricky_store/security_patch.txt
-all=2026-04-01
-EOF
-fi
+#if [ ! -f /data/adb/tricky_store/security_patch.txt ]; then
+#cat <<EOF > /data/adb/tricky_store/security_patch.txt
+#all=2026-04-01
+#EOF
+#fi
 
 ##########################################
 # adapted from Play Integrity Fork by @osm0sis

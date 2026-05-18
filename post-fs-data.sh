@@ -1014,9 +1014,9 @@ log "Using resetprop: $RESETPROP"
 # Always set static default props
 "$RESETPROP" ro.boot.vbmeta.size "4096"
 "$RESETPROP" ro.boot.vbmeta.hash_alg "sha256"
-"$RESETPROP" ro.boot.vbmeta.avb_version "2.0"
+"$RESETPROP" ro.boot.vbmeta.avb_version "1.1"
 "$RESETPROP" ro.boot.vbmeta.device_state "locked"
-log "Set static VBMeta props: size=4096, hash_alg=sha256, avb_version=2.0, device_state=locked"
+log "Set static VBMeta props: size=4096, hash_alg=sha256, avb_version=1.1, device_state=locked"
 
 # Handle hash
 if [ ! -s "$HASH_FILE" ]; then
